@@ -1,10 +1,9 @@
 package com.itransition.CourseProject.repo;
 
-import com.itransition.CourseProject.models.Post;
+import com.itransition.CourseProject.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {
-
+public interface UserRepository extends JpaRepository<User, Long> {
 }

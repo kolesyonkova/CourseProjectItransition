@@ -30,7 +30,10 @@ public class BlogController {
     }
 
     @PostMapping("/add")
-    public String blogAddToDB(@RequestParam String title, @RequestParam String anons, @RequestParam String fullText, Model model) {
+    public String blogAddToDB(@RequestParam String title,
+                              @RequestParam String anons,
+                              @RequestParam String fullText,
+                              Model model) {
         Post post = new Post(title, anons, fullText);
         postRepository.save(post);
         return "redirect:/blog";
