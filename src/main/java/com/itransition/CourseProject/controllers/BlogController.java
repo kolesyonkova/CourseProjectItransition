@@ -14,6 +14,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
+
     @Autowired
     private PostRepository postRepository;
 
@@ -64,7 +65,11 @@ public class BlogController {
     }
 
     @PostMapping("/{id}/edit")
-    public String blogPostUpdate(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String anons, @RequestParam String fullText, Model model) {
+    public String blogPostUpdate(@PathVariable(value = "id") long id,
+                                 @RequestParam String title,
+                                 @RequestParam String anons,
+                                 @RequestParam String fullText,
+                                 Model model) {
         Post post = postRepository.findById(id).orElseThrow();
         post.setTitle(title);
         post.setAnons(anons);
