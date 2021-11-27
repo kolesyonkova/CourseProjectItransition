@@ -24,8 +24,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(@RequestParam String username, @RequestParam String password, Model model) {
-        System.out.println(username + password);
+    public String addUser(@RequestParam String username,
+                          @RequestParam String password,
+                          Model model) {
         User user = new User(username, password);
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));

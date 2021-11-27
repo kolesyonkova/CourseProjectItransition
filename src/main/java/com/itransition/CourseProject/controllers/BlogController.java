@@ -1,8 +1,10 @@
 package com.itransition.CourseProject.controllers;
 
 import com.itransition.CourseProject.models.Post;
+import com.itransition.CourseProject.models.User;
 import com.itransition.CourseProject.repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,11 +33,12 @@ public class BlogController {
     }
 
     @PostMapping("/add")
-    public String blogAddToDB(@RequestParam String title,
+    public String blogAddToDB(@AuthenticationPrincipal User user,
+                              @RequestParam String title,
                               @RequestParam String anons,
                               @RequestParam String fullText,
                               Model model) {
-        Post post = new Post(title, anons, fullText);
+        Post post = new Post(title, anons, fullText, user);
         postRepository.save(post);
         return "redirect:/blog";
     }

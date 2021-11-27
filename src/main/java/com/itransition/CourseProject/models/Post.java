@@ -7,7 +7,8 @@ import javax.persistence.*;
 @Data
 @Entity(name = "post")
 public class Post {
-    public Post(String title, String anons, String fullText) {
+    public Post(String title, String anons, String fullText, User user) {
+        this.author = user;
         this.title = title;
         this.anons = anons;
         this.fullText = fullText;
@@ -20,8 +21,12 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String title,anons,fullText;
+    private String title, anons, fullText;
     private int views;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
 
 }
  
