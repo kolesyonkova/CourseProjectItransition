@@ -29,7 +29,7 @@ public class RegistrationController {
                           Model model) {
         User user = new User(username, password);
         user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
+        user.setRoles(Collections.singleton(Role.ADMIN));
         userRepository.save(user);
         return "redirect:/login";
     }
