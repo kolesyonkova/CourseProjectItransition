@@ -55,7 +55,6 @@ public class UserController {
                 user.getRoles().add(Role.valueOf(key));
             }
         }
-        System.out.println(user.toString());
         userRepository.save(user);
 
         return "redirect:/user";

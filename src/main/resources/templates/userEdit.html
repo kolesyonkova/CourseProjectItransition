@@ -12,12 +12,7 @@
     <h1>Редактирование пользователя:</h1>
     <form action="/user" method="post" th:object="${user}">
         <input type="text" name="username" th:value="${user.getUsername()}">
-        <input type="checkbox" th:each="role : ${T(com.itransition.CourseProject.models.Role).values()}"
-               th:value="${role}" th:text="${role}"/>
-        <!--        <select name="planet" th:field="${user.getRoles()}">-->
-        <!--            <option th:each="role : ${T(com.itransition.CourseProject.models.Role).values()}"-->
-        <!--                    th:value="${role}"  th:text="#{${'role.' + role}}"></option>-->
-        <!--        </select>-->
+
         <input type="hidden" th:value="${user.getId()}" name="userId">
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
